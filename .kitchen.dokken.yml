@@ -8,11 +8,8 @@ transport:
   username: root
 
 provisioner:
-  name: chef_zero
-  sudo: false
-  install_strategy: skip
-  cookbook_path:
-    - /opt/kitchen/cookbooks
+  name: shell
+  command: "echo Skip converge; echo upload validation is done in InSpec verify phase"
 
 verifier:
   name: inspec
@@ -25,8 +22,6 @@ platforms:
 
 suites:
   - name: upload
-    provisioner:
-      run_list: []
     verifier:
       inspec_tests:
         - test/integration/upload
