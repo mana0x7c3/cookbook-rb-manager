@@ -22,4 +22,5 @@ jobs:
       - name: Run Test Kitchen upload suite
         env:
           KITCHEN_LOCAL_YAML: .kitchen.dokken.yml
+          CHEF_LICENSE: accept-no-persist
         run: bundle exec kitchen test upload
