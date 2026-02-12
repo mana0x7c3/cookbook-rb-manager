@@ -5,9 +5,11 @@ driver:
 
 transport:
   name: dokken
+  username: root
 
 provisioner:
   name: chef_zero
+  sudo: false
   install_strategy: skip
   cookbook_path:
     - /opt/kitchen/cookbooks
