@@ -8,9 +8,9 @@ transport:
 
 provisioner:
   name: chef_zero
-  product_name: chef
-  product_version: 18
-  product_license: accept-no-persist
+  install_strategy: skip
+  cookbook_path:
+    - /opt/kitchen/cookbooks
 
 verifier:
   name: inspec
