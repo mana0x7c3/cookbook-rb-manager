@@ -1,0 +1,24 @@
+---
+driver:
+  name: dokken
+
+transport:
+  name: dokken
+  username: root
+
+provisioner:
+  name: shell
+  command: "echo Skip converge; echo upload validation is done in InSpec verify phase"
+
+verifier:
+  name: inspec
+  chef_license: accept-no-persist
+
+platforms:
+  - name: rockylinux-9
+
+suites:
+  - name: upload
+    verifier:
+      inspec_tests:
+        - test/integration/upload

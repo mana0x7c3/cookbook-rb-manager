@@ -1,0 +1,26 @@
+name: kitchen-tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  kitchen-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Run Test Kitchen upload suite
+        env:
+          KITCHEN_LOCAL_YAML: .kitchen.dokken.yml
+          CHEF_LICENSE: accept-no-persist
+        run: bundle exec kitchen test upload
