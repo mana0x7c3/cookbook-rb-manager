@@ -1,0 +1,28 @@
+---
+driver:
+  name: dokken
+  privileged: true
+
+transport:
+  name: dokken
+
+provisioner:
+  name: chef_zero
+  product_name: chef
+  product_version: 18
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: rockylinux-9
+    driver:
+      image: dokken/rockylinux-9
+
+suites:
+  - name: upload
+    provisioner:
+      run_list: []
+    verifier:
+      inspec_tests:
+        - test/integration/upload
